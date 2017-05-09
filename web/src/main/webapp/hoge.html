@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hoge</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(function() {
+  $('#jsonp').click(function() {
+	$.ajax({
+		type : 'GET',
+		url : 'http://localhost:8081/api/crossdomain/jsonpresource',
+		data : "param=hogehoge",
+		dataType : 'jsonp',
+		jsonpCallback : 'callback',
+		success : function(json) {
+			console.log(json);
+		}
+
+	});
+   });
+});
+</script>
+
+</head>
+<body>
+
+	<input id="jsonp" type="button" value="jsonp" />
+	<b id="fuga"></b>
+</body>
+</html>
