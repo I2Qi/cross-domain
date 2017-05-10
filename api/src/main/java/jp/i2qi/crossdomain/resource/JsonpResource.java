@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
  *
  */
 @Path("/jsonpresource")
-public class CrossDomainResource {
+public class JsonpResource {
 
     @GET
     @JSONP(queryParam = "callback")

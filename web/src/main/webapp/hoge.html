@@ -9,7 +9,7 @@ $(function() {
   $('#jsonp').click(function() {
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8081/api/crossdomain/jsonpresource',
+		url : 'http://localhost:8081/api/crossdomain/jsonpresource?callback=?',
 		data : "param=hogehoge",
 		dataType : 'jsonp',
 		jsonpCallback : 'callback',
@@ -19,13 +19,26 @@ $(function() {
 
 	});
    });
+
+  $('#cors').click(function() {
+	$.ajax({
+		type : 'POST',
+		url : 'http://localhost:8081/api/crossdomain/corsresource',
+		data : JSON.stringify({"paramOne" : "1", "paramTwo" : "22", "paramThree" : "333" }),
+		contentType : 'application/json',
+		dataType : 'json',
+		success : function(json) {
+			console.log(json);
+		}
+	});
+ });
 });
 </script>
 
 </head>
 <body>
 
-	<input id="jsonp" type="button" value="jsonp" />
-	<b id="fuga"></b>
+	<input id="jsonp" type="button" value="jsonp" /><br>
+	<input id="cors" type="button" value="cors" />
 </body>
 </html>
